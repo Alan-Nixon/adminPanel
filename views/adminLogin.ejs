@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+</head>
+<section>
+<body>
+    <div class="login-box">
+        <form action="login" method="post">
+            <h2>Admin Login</h2>
+            <div class="err">
+                <% if (notAdmin) { %>
+                    <p class="error">Authorized persons only</p>
+                    <script>
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 5000);
+                    </script>
+                  <% } else if(passErr) { %>
+                    <p class="error">Admin password not found</p>
+                    <script>
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 5000);
+                    </script>
+                    <% } else if (loginDetialsErr) { %>
+                        <p class="error">please enter a valid email</p>
+                    <script>
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 5000);
+                    </script>
+                    <% } %>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" name="email" class="inputBox" required placeholder="Email">
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="password" value="alan@2520" class="inputBox" required placeholder="password">
+            </div>
+            <button type="submit">Login</button>
+            
+        </form>
+    </div>
+</section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+

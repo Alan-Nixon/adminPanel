@@ -1,0 +1,107 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  .bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  video#login {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+  }
+  
+  .loginMain {
+    width: 40%;
+    height: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    z-index: 30;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid white;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+  }
+  
+  #mailbox {
+    width: 100%;
+    height: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    border: 1px solid white;
+    border-radius: 5px;
+    background: #000;
+    color: antiquewhite;
+    font-size: 20px;
+  }
+  
+  #mailbox::placeholder {
+    color: aqua;
+  }
+  
+  #Pass {
+    width: 60%;
+    height: 50px;
+    padding-left: 5%;
+    margin-top: 20px;
+    border: 1px solid white;
+    border-radius: 5px 0 5px 0px;
+    background: #000;
+    color: antiquewhite;
+    font-size: 20px;
+  }
+  
+  #Pass::placeholder {
+    color: aqua;
+  }
+  
+  .Eyebtn {
+    width: 10%;
+    height: 50px;
+    border-radius: 0 5px 0 5px;
+    background: black;
+    color: white;
+    border: 1px solid white;
+    margin-left: 0;
+    font-size: 20px;
+  }
+  
+  #subBtn {
+    width: 30%;
+    border-radius: 10px;
+    border: 0;
+    height: 50px;
+    color: white;
+    background: transparent;
+    color: aqua;
+    transition: 0.5s;
+    bottom: 0;
+    font-size: 18px;
+  }
+  
+  #subBtn:hover {
+    background: aqua;
+    color: #000;
+    
+  }
+  
+  .btnSection {
+    width: 100%;
+    margin-top: 20px;
+  }

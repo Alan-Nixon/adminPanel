@@ -1,0 +1,130 @@
+body {
+    background: url('https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg') no-repeat;
+    background-size: cover;
+}
+
+.navbarHead {
+    background-color: transparent;
+    width: 100%;
+    position: relative;
+    margin-top: 0;
+    height: 65px;
+}
+
+.headText {
+    font-family: 'Courier New', Courier, monospace;
+    position: fixed;
+    display: block;
+    margin-top: 2.5%;
+    font-weight: bold;
+    margin-left: 8%;
+    color: cyan;
+}
+
+.divText {
+    background-color: transparent;
+    width: 1000px;
+    margin-left: 12%;
+    margin-top: 9%;
+}
+
+.text {
+    color: #00FF00;
+    font-family: "Courier";
+    font-size: 35px;
+    font-weight: bold;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 4s steps(60, end);
+}
+
+@keyframes type {
+    from {
+        width: 0;
+    }
+}
+
+.btnAlink{
+    text-decoration: none;
+}
+
+.btnAlink:hover{
+    text-decoration: none;
+}
+
+.buttonLogout {
+    margin-top: 4%;
+    margin-left: 4%;
+    border-radius: 10%;
+    color: transparent;
+    border: 2 px solid white;
+    width: 130px;
+    height: 35px;
+    transform: .5s;
+
+}
+
+
+.btn-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 22.5rem;
+    height: auto;
+}
+
+
+.btn-box .btn {
+     position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    margin-left: 15%;
+    width: 15rem;
+    height: 35px;
+    font-size: large;
+    color: white;
+    background: #00abf0;
+    border-radius: .4rem;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    z-index: 1;
+    overflow: hidden;
+    border: 2px solid black;
+    transform: .5s; 
+}
+
+.btn-box .btn:nth-child(1) {
+    background: transparent;
+}
+
+.btn-box.btn:nth-child(1):hover {
+    border: 0px solid white;
+    background: black;
+}
+
+.btn-box .btn:nth-child(1)::before {
+    background: black;
+}
+
+.btn-box .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+
+    background: #081b29;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-box .btn:hover:before {
+    width: 100%;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="table">
+        <h1 class="headIng">User Detials</h1>
+
+        <form class="search" action="admin/search" method="post">
+            <div class="">
+                <input type="text" class="searchBox" placeholder="Search" name="search">
+                <button type="submit" class="btn-info hoverbtn" style="padding: 3px;">Search</button>
+                <a href="admin/createUser" type="button" class="btn-success hoverbtn" style="margin-left: 0px;">
+                    <center>Create</center>
+                </a>
+                <a href="admin/logout" type="button" class="btn-secondary hoverbtn">
+                    <center>logout</center>
+                </a>
+            </div>
+        </form>
+
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th> Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Admin <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> User status <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Operation <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let slNo=1 %>
+                        <% users.forEach((users)=> { %>
+                            <tr>
+                                <td>
+                                    <%= slNo%>
+                                </td>
+                                <td>
+                                    <input type="text" value="<%=users.Name%>" name="Name" id="Name<%= users._id%>"
+                                        style="width: 100px; border: none;">
+
+                                </td>
+                                <td>
+                                    <input type="text" value="<%=users.email%>" name="email" id="email<%= users._id%>"
+                                        style="width: 250px; border: none;">
+
+                                </td>
+                                <td> <strong>
+                                        <input type="text" value=" <%=users.Admin%>" name="status"
+                                            id="status<%= users._id%>" style="width: 50px; border: none;">
+
+                                    </strong></td>
+                                <td>
+                                    <p class="status <%=users.status%>" id="<%= users._id%>">
+                                        <%=users.status%>
+                                    </p>
+                                </td>
+                                <td>
+                                    <a onclick="updateButton('<%=users._id%>')" type="button"
+                                        class="btn-primary update-button">
+                                        <center id="<%= users._id%>">update</center>
+                                    </a>
+                                    <a href="admin/delete/?id=<%= users._id%>" type="button"
+                                        class="btn-danger update-button">
+                                        <center>Delete</center>
+                                    </a>
+                                    <a href='admin/block/?id=<%= users._id %>&status=<%=users.status%>' id="blockEVent"
+                                        onclick="return blockUser('<%=users._id%>')" type="button"
+                                        class="btn-warning update-button">
+                                        <%if(users.status==="Active"){%>
+                                            <center id="button_<%= users._id%>">block</center>
+                                            <%}else{%>
+                                                <center id="button_<%= users._id%>">unblock</center <% }%>
+                                    </a>
+                                </td>
+                            </tr>
+                            <% slNo++; %>
+                                <% }); %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        async function updateButton(userId) {
+            console.log(userId);
+            let Name = document.getElementById('Name' + userId).value
+            let email = document.getElementById('email' + userId).value
+            let status = document.getElementById('status' + userId).value
+            let dataToSend = {
+                id: userId,
+                Name: Name,
+                email: email,
+                status: status
+            }
+            console.log(dataToSend);
+            let result = await fetch('admin/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify(dataToSend), // Convert the data to JSON
+            })
+
+            console.log(result);
+        }
+
+        function blockUser(userid) {
+            var userInput = prompt("Please enter something:");
+            if (userInput !== '' || userInput !== null) {
+                alert(userInput)
+                let id = document.getElementById(userid)
+                let buttonId = document.getElementById("button_" + userid)
+                if (id.innerHTML === "blocked") {
+                    id.className = "status Active"
+                    id.innerHTML = "active"
+                    buttonId.innerHTML = "<center>block</center>"
+                } else {
+                    id.className = "status blocked"
+                    id.innerHTML = "blocked"
+                    buttonId.innerHTML = "<center>unblock</center>"
+                }
+            }else{
+                alert(userInput+"working succesfull")
+            }
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
